@@ -37,7 +37,7 @@ namespace Teste.LojaTav2021
             {
                 idCliente = 7,
                 paisOrigem = "Canada",
-                endereco = "311 W Cordova St, Vancouver BC",
+                endereco = "Vancouver BC 311 W Cordova Street",
                 cep = 98663
             };
             double esperado = 44.67;
