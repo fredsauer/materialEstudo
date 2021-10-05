@@ -1,3 +1,5 @@
+// PROGRAMA REFATORADO POR FREDERICO LEITE SAUER EM ATIVIDADE PARA FAETERJ-RIO
+
 using Api.LojaTav2021.Interfaces;
 using Api.LojaTav2021.Model;
 using Moq;
@@ -14,7 +16,7 @@ namespace Teste.LojaTav2021
         public void ValidaEntregaIdZerado()
         {
             // Arrange
-            Pedido pedido = new Pedido(1, 12, 0, 15.98);
+            Pedido pedido = new Pedido(1, 13, 1, 26.99);
             bool esperado = false;
             IEntrega entrega = new Entrega();
             Mock<IEntrega> mock = new Mock<IEntrega>();
@@ -33,25 +35,26 @@ namespace Teste.LojaTav2021
             _mockCliente = new Mock<ICliente>();
             Cliente cliente = new Cliente()
             {
-                idCliente = 3,
-                endereco = "Clarimundo de Melo 857",
-                cep = 20123456
+                idCliente = 7,
+                paisOrigem = "Canada",
+                endereco = "311 W Cordova St, Vancouver BC",
+                cep = 98663
             };
-            double esperado = 7.26;
-            int cep = 20123456;
+            double esperado = 44.67;
+            int cep = 98663;
             _mockCliente.Setup(x => x.getCepById(3)).Returns(cliente.cep);
 
             Mock<IFrete> _mockFrete = new Mock<IFrete>();
             Frete frete = new Frete()
             {
-                idFrete = 25,
-                cep = 20123456,
-                valorFrete = 7.26
+                idFrete = 66,
+                cep = 98663,
+                valorFrete = 44.67
             };
             _mockFrete.Setup(y => y.GetValorFrete(cep)).Returns(frete.valorFrete);
 
             // ACT
-            Pedido pedido = new Pedido(1, 3, _mockCliente.Object, _mockFrete.Object, 5, 25.56);
+            Pedido pedido = new Pedido(1, 6, _mockCliente.Object, _mockFrete.Object, 10, 77.43);
             double resultado = pedido.CalcularFrete();
 
             //Assert
