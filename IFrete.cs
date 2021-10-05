@@ -7,6 +7,6 @@ namespace Api.LojaTav2021.Interfaces
 {
     public interface IFrete
     {
-        public double GetValorFrete(int cep);
+        public double GetValorFrete(int cep); 
     }
 }
